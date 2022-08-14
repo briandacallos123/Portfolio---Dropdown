@@ -1,0 +1,291 @@
+header{
+    padding: 1rem 0;
+    .sub_container{
+        .header_brand{
+            @include flex(row, space-between, center);
+            
+            i{
+                display: inline-block;
+               width: 25px;
+               height: 3px;
+               position: relative;
+               background-color: black;
+            }
+            i::before{
+                content:"";
+                position: absolute;
+                width: 25px;
+               height: 3px;
+               background-color: black;
+               top:-5px;
+            }
+            i::after{
+                content:"";
+                position: absolute;
+                width: 25px;
+               height: 3px;
+               background-color: black;
+               top:5px;
+            }
+        }
+
+        .main_nav{
+            height: 100%;
+            // visibility: hidden;
+            position: absolute;
+            top:0;
+            right:0;
+            width:0;
+            overflow: hidden;
+            background-color:white;
+            z-index: 1000;
+          
+
+            // display:grid;
+            @include flex(column, flex-start, flex-start);
+
+
+
+            // for mobile
+            transition: width 250ms ease;
+
+            &_cat{
+               
+
+                span{
+                    display: inline-block;
+                    height: 3px;
+                    width: 30px;
+                    background-color: black;
+                    position: absolute;
+                    right: 10px;
+                    top:20px;
+                    transform: rotate(0deg);
+                    transition: transform 1s ease;
+                    margin-top: 1rem;
+                }
+                span::before{
+                    content:"";
+                    height: 3px;
+                    width: 30px;
+                    background-color: black;
+                    transform: rotate(0deg);
+                    position: absolute;
+                    top:10px;
+                    transform: rotate(0deg);
+                    transition: transform 500ms ease;
+                }
+                .span_show{
+                    transform:rotate(45deg);
+                }
+                .span_show::before{
+                    transform: rotate(-90deg) translateX(10px)
+                    
+                }
+                
+             
+                
+            }
+
+            &_links{
+                
+                margin-top: 5rem;
+                padding:0 1rem;
+                .main_nav_links_features{
+                    height: 0;
+                    opacity:0;
+                    transition: all 250ms  ease;
+                }
+                .main_nav_links_company{
+                    @extend  .main_nav_links_features
+                }
+                li{
+                    margin:1rem;    
+                  
+                    li{
+                        margin:0;
+                    }
+                }
+                a{
+                    color:rgba(0,0,0,.7);
+                    text-decoration: none;
+
+                    &:hover{
+                        color:rgba(0,0,170,1);
+                    }
+                    
+                }
+                .fa-angle-down{
+                    margin-left: 1rem;
+                }
+                .showlinks{
+                    height:auto;
+                    opacity: 1;
+                }
+                .showlinks li{
+                    margin: 1rem;
+                }
+                .anchor{
+                    display:inline;
+                }
+                .showlinks li:last-child{
+                    margin-bottom: 2rem;
+                }
+                .fa-angle-up{
+                    opacity:0;
+                }
+                .showlinks .fa-angle-down{
+                    opacity:0;
+                }
+                .showlinks .fa-angle-up{
+                    opacity:1;
+                }
+            }
+        }
+        .show_nav{
+            // visibility: visible;
+            width:65vw;
+        }
+        .form{
+            @include flex(column, flex-start, center);
+            width: 100%;
+           
+            button{
+                display: block;
+                width: 95%;
+                padding:.7em;
+
+                &:first-child{
+                    margin: 1rem 0 .5rem;
+                    background: transparent;
+                    border:none;
+                }
+                &:last-child{
+                    border-radius: 15px;
+                    border: 1px solid rgba(0,0,0,.6);
+                }
+            }
+        
+        }
+    }
+    @include desktop{
+        // padding:0;
+        .sub_container{
+            display:grid;
+            grid-template-columns: 1fr 4fr;
+            // background-color: green;
+            .header_brand{
+                @include flex(row, space-between, center);
+                
+                i{
+                    display:none;
+                }
+            }
+
+            // nav
+            .main_nav{
+                height: 50px;
+                // visibility: hidden;
+                position: static;
+                overflow: visible;
+                width: 100%;
+                background-color: transparent;
+                // z-index: 1000;
+                
+    
+                // display:grid;
+                @include flex(row, space-between, center);
+                
+    
+    
+                // for mobile
+                transition: none;
+    
+                &_cat{
+                   display:none;
+                }
+    
+                &_links{
+                    @include flex(row, space-between, center);
+                    margin-top: 0;
+                    // padding:0 1rem;
+                    .main_nav_links_features{
+                        height: 0;
+                        opacity:0;
+                        transition: all 250ms  ease;
+                    }
+                    .main_nav_links_company{
+                        @extend  .main_nav_links_features
+                    }
+                    li{
+                        margin:0 .5rem;
+                        position: relative;
+                      
+                       ul{
+                        position: absolute;
+                        // background-color: green;
+                        li{
+                            // background-color: red;
+                            width: 100%;
+                            left:-10px;
+                        }
+                       }
+                    }
+                    a{
+                        color:rgba(0,0,0,.7);
+                        text-decoration: none;
+                        
+                    }
+                    .fa-angle-down{
+                        margin-left: .5rem;
+                    }
+                    .showlinks{
+                        height:auto;
+                        opacity: 1;
+                    }
+                    .showlinks li{
+                        margin: 1rem;
+                    }
+                    .anchor{
+                        display:inline;
+                    }
+                    .showlinks li:last-child{
+                        margin-bottom: 2rem;
+                    }
+                    .fa-angle-up{
+                        opacity:0;
+                    }
+                    .showlinks .fa-angle-down{
+                        opacity:0;
+                    }
+                    .showlinks .fa-angle-up{
+                        opacity:1;
+                    }
+                }
+                .form{
+                    @include flex(row, flex-start, center);
+                    width:auto;
+                   
+                    button{
+                        // display: none;
+                        width: 120px;
+                        padding:.6em;
+        
+                        &:first-child{
+                            margin: 1rem 0 .5rem;
+                            background: transparent;
+                            border:none;
+                        }
+                        &:last-child{
+                            border-radius: 15px;
+                            border: 1px solid rgba(0,0,0,.6);
+                        }
+                    }
+                
+                }
+            }
+            
+        }
+       
+    }
+}

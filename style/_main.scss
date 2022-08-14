@@ -1,0 +1,110 @@
+main{
+    // @include grid(repeat(2, 1fr), .5rem)
+    
+    height: calc(100vh - 63px);
+    display: grid;
+    grid-template-rows: 1fr 1fr 120px;
+    // background-color: red;
+    .hero{
+        width: 100%;
+        margin-bottom: 2rem;
+
+        img{
+            width: inherit;
+         
+        }
+    }
+    .text{
+        text-align: center;
+        padding:1rem;
+
+        
+        .learn_more{
+            background-color: black;
+            color:white;
+            border:none;
+            border-radius: 15px;
+            animation:brian 1.5s ease infinite;
+
+            @keyframes brian{
+                0%{
+                    transform: scale(.9);
+                }
+                50%{
+                    transform: scale(1);
+                }
+                100%{
+                    transform: scale(.9);
+                }
+            }
+        }
+    }
+    footer{
+        // justify-self: flex-end;
+        @include flex(row, space-around, center);
+        // background-color: red;
+    }
+
+    // desktop
+
+    @include desktop{
+        height: calc(100vh - 76px);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+ 
+        // background-color: red;
+        .hero{  
+            grid-column: 2/-1;
+            grid-row:1 / -1;
+            width: 100%;
+            height: 100%;
+            @include flex(column, center, center);
+            // background-color: red;
+            
+
+            img{
+                width: inherit;
+                //    height: 100%;
+            
+            }
+        }
+        .text{
+            padding:1.5rem;
+            text-align: left;
+            grid-column: 1/2;
+            grid-row:1/3;
+            // background-color: red;
+            @include flex(column, center, flex-start);
+            
+            .learn_more{
+                background-color: black;
+                color:white;
+                border:none;
+                border-radius: 15px;
+                animation:brian 1.5s ease infinite;
+                padding:1em 2em;
+                @keyframes brian{
+                    0%{
+                        transform: scale(.9);
+                    }
+                    50%{
+                        transform: scale(1);
+                    }
+                    100%{
+                        transform: scale(.9);
+                    }
+                }
+            }
+            p{
+                margin: 2rem 0;
+                width:70%;
+            }
+        }
+        footer{
+            // justify-self: flex-end;
+            @include flex(row, space-around, center);
+            // background-color: red;
+            width:70%;
+        }
+        }
+}
